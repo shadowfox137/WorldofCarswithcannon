@@ -13,8 +13,8 @@
   color: #61dafb;
 }
 
-#canvas {
-  visibility: hidden;
+canvas {
+  visibility: visible;
   position: fixed;
   display: block;
   border: 3px solid green;
@@ -46,4 +46,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#myCanvas {
+  background-color: blueviolet;
 }

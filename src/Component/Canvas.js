@@ -1,22 +1,20 @@
 import React, { useRef, useEffect } from "react";
+import Draw from "../Script/Draw";
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const draw = (ctx) => {
-    ctx.fillStyle = "#000000";
-    ctx.beginPath();
-    ctx.arc(50, 100, 20, 0, 2 * Math.PI);
-    ctx.fill();
-  };
-
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
+    const objectsToDraw = [];
     //Our first draw
-    draw(context);
-  }, [draw]);
+    for (let i = 0; i < objectsToDraw.length; i += 1) {
+      objectsToDraw[i].Draw();
+    }
+    context.fillStyle = "#000000";
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+  }, []);
 
   return <canvas ref={canvasRef} {...props} />;
 };
