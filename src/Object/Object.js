@@ -72,4 +72,8 @@ export class Player extends Unit {
       this.x_move(5);
     }
   }
+
+  draw(context) {
+    console.log("drawing player");
+  }
 }

@@ -2,6 +2,7 @@ import "./CSS/App.css";
 import React, { useEffect } from "react";
 import Draw from "./Script/Draw";
 import Mainmenu from "./Component/Mainmenu";
+import Controller from "./Script/Controller";
 
 const HOOK_SVG = (
   <svg
@@ -35,35 +36,32 @@ function draw(ctx, location) {
   ctx.restore();
 }
 
-function refresh(canvasRef, e) {
-  const canvas = canvasRef.current;
-  const ctx = canvas.getContext("2d");
-  Draw(ctx);
-}
-
 function App() {
   const canvasRef = React.useRef(null);
+  const ctr = new Controller();
+
+  function initCanvas(canvasRef, ctr) {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctr.setCtx(ctx);
+  }
 
   useEffect(() => {
-    refresh(canvasRef, null);
+    ctr.refresh();
   });
 
   return (
     <div>
       <canvas
+        id="canvas"
         ref={canvasRef}
         width={800}
         height={800}
-        onClick={(e) => {
-          refresh(canvasRef, e);
-          //const canvas = canvasRef.current;
-          //const ctx = canvas.getContext("2d");
-          // Draw(ctx);
-          //draw(ctx, { x: e.clientX, y: e.clientY });
-          // alert(e.clientX);
-        }}
+        tabIndex="0"
+        onLoad={() => initCanvas(canvasRef, ctr)}
+        onKeyPress={(e) => alert(e.key)}
       />
-      <div>
+      <div id="mainmenu">
         <Mainmenu />
       </div>
     </div>
