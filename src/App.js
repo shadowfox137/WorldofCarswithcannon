@@ -50,6 +50,11 @@ function App() {
     ctr.refresh();
   });
 
+  // Set drawing interval
+  setInterval(function () {
+    ctr.refresh();
+  }, 30000000);
+
   return (
     <div>
       <canvas
