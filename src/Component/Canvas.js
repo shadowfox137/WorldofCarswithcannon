@@ -1,22 +1,35 @@
-import React, { useRef, useEffect } from "react";
-import Draw from "../Script/Draw";
+import React, { useRef, useEffect, useState } from "react";
 
-const Canvas = (props) => {
+function Canvas(props) {
   const canvasRef = useRef(null);
+  const canvasObj = canvasRef.current;
+  const SCALE = 0.1;
+  const OFFSET = 80;
+  var context = canvasObj.getContext("2d");
 
-  useEffect(() => {
+  function initCanvas(canvasRef) {
     const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
-    const objectsToDraw = [];
-    //Our first draw
-    for (let i = 0; i < objectsToDraw.length; i += 1) {
-      objectsToDraw[i].Draw();
-    }
-    context.fillStyle = "#000000";
-    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
-  }, []);
+    const ctx = canvas.getContext("2d");
+    console.log(props.test_text);
 
-  return <canvas ref={canvasRef} {...props} />;
-};
+    props.context.setCtx(context);
+  }
+
+  function test_function(carry) {
+    console.log(carry);
+  }
+
+  return (
+    <canvas
+      id="canvas"
+      // ref={(c) => (context = c.getContext("2d"))}
+      width={800}
+      height={800}
+      tabIndex="0"
+      onLoad={initCanvas()}
+      onKeyPress={(e) => alert(e.key)}
+    />
+  );
+}
 
 export default Canvas;

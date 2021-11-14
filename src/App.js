@@ -1,7 +1,7 @@
 import "./CSS/App.css";
 import React, { useEffect } from "react";
-import Draw from "./Script/Draw";
 import Mainmenu from "./Component/Mainmenu";
+import { useCanvas } from "./Script/useCanvas";
 import Controller from "./Script/Controller";
 
 const HOOK_SVG = (
@@ -37,39 +37,42 @@ function draw(ctx, location) {
 }
 
 function App() {
-  const canvasRef = React.useRef(null);
   const ctr = new Controller();
+  const [coordinates, setCorrdinates, canvasRef, canvasWidth, canvasHeight] =
+    useCanvas();
 
-  function initCanvas(canvasRef, ctr) {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    ctr.setCtx(ctx);
-  }
+  const handleCanvasClick = (event) => {
+    const currentCoord = { x: event.clientX, y: event.clientY };
+    setCorrdinates([...coordinates, currentCoord]);
+  };
+
+  const handleClearCanvas = (event) => {
+    setCorrdinates([]);
+  };
 
   useEffect(() => {
-    ctr.refresh();
+    // ctr.refresh();
   });
 
   // Set drawing interval
   setInterval(function () {
-    ctr.refresh();
-  }, 30000000);
+    // ctr.refresh();
+  }, 3000);
 
   return (
-    <div>
+    <main className="App-main">
       <canvas
-        id="canvas"
+        className="App-canvas"
         ref={canvasRef}
-        width={800}
-        height={800}
-        tabIndex="0"
-        onLoad={() => initCanvas(canvasRef, ctr)}
-        onKeyPress={(e) => alert(e.key)}
+        width={canvasWidth}
+        height={canvasHeight}
+        onClick={handleCanvasClick}
       />
-      <div id="mainmenu">
-        <Mainmenu />
+
+      <div className="button">
+        <button onClick={handleClearCanvas}> CLEAR </button>
       </div>
-    </div>
+    </main>
   );
 }
 export default App;

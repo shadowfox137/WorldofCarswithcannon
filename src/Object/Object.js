@@ -42,14 +42,9 @@ export class Obstacle extends DrawingObject {
     super();
   }
 
-  draw(context) {
-    context.fillStyle = "#000000";
-    context.fillRect(
-      50,
-      50,
-      context.canvas.width - 100,
-      context.canvas.height - 100
-    );
+  draw(ctx) {
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(50, 50, ctx.canvas.width - 100, ctx.canvas.height - 100);
   }
 }
 
