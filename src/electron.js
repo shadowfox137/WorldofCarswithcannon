@@ -9,8 +9,10 @@ const isDev = require("electron-is-dev");
 let mainWindow;
 
 function createWindow() {
-  mainWindow = new BrowserWindow({ width: 900, height: 680 });
+  mainWindow = new BrowserWindow({ width: 1600, height: 900 });
   mainWindow.loadURL("http://localhost:3000");
+  mainWindow.resizable = false; //fix window size
+  mainWindow.setMenuBarVisibility(false); //hide menu bar
   mainWindow.on("closed", () => (mainWindow = null));
 }
 

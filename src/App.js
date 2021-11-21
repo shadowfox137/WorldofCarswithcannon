@@ -48,6 +48,11 @@ function App() {
 
   const handleClearCanvas = (event) => {
     setCorrdinates([]);
+    console.log("clear");
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+    console.log(canvasWidth);
+    console.log(canvasHeight);
   };
 
   useEffect(() => {
@@ -59,6 +64,13 @@ function App() {
     // ctr.refresh();
   }, 3000);
 
+  /*
+        <div className="button">
+        <button onClick={handleClearCanvas}> CLEAR </button>
+        </div>
+
+  */
+
   return (
     <main className="App-main">
       <canvas
@@ -68,10 +80,6 @@ function App() {
         height={canvasHeight}
         onClick={handleCanvasClick}
       />
-
-      <div className="button">
-        <button onClick={handleClearCanvas}> CLEAR </button>
-      </div>
     </main>
   );
 }

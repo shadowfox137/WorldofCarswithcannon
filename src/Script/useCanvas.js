@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Draw from "./Draw";
 
-export const canvasWidth = window.innerWidth * 0.5;
-export const canvasHeight = window.innerHeight * 0.5;
+//leaving one px at the between the edges of the canvas
+export const canvasWidth = 1582;
+export const canvasHeight = 839;
 
 export function useCanvas() {
   const canvasRef = useRef(null);
