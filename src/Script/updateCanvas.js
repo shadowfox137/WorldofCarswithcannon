@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Draw from "./Draw";
 
 export const canvasWidth = 1600;
@@ -6,7 +6,8 @@ export const canvasHeight = 900;
 
 export function UpdateCanvas() {
   const canvasRef = useRef(null);
-  const [objects, setObjects] = useState([]);
+  const initialState = 0;
+  const [objects, setObjects] = useState(initialState);
 
   useEffect(() => {
     const canvasObj = canvasRef.current;
@@ -15,9 +16,9 @@ export function UpdateCanvas() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
     // draw all coordinates held in state
-    objects.forEach((obj) => {
-      Draw(ctx, obj);
-    });
+    //objects.forEach((obj) => {
+    //Draw(ctx, obj);
+    //});
   });
 
   return [objects, setObjects, canvasRef, canvasWidth, canvasHeight];

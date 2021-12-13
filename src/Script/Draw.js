@@ -1,4 +1,3 @@
-import React from "react";
 import "../Object/Object";
 import { Obstacle } from "../Object/Object";
 
