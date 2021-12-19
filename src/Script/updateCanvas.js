@@ -6,7 +6,7 @@ export const canvasHeight = 900;
 
 export function UpdateCanvas() {
   const canvasRef = useRef(null);
-  const initialState = 0;
+  const initialState = [10];
   const [objects, setObjects] = useState(initialState);
 
   useEffect(() => {

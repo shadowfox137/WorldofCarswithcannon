@@ -26,6 +26,10 @@ class Controller {
   addToList(object) {
     this.drawingList.push(object);
   }
+
+  getObject() {
+    return 10;
+  }
 }
 
 export default Controller;

@@ -1,4 +1,8 @@
+import Draw from "../Script/Draw";
+
 export class DrawingObject {
+  // posx and posy are the coordinates of the top left corner of the object
+  // size will determine the hitbox of the object
   constructor(pos_x, pos_y, size_x, size_y, type) {
     this.size_x = size_x;
     this.size_y = size_y;
@@ -11,29 +15,31 @@ export class DrawingObject {
     this.size_x = x;
     this.size_y = y;
   }
+
+  draw(context) {
+    console.log("drawing unit");
+  }
 }
 
 export class Unit extends DrawingObject {
   constructor(pos_x, pos_y, size_x, size_y, type) {
     super();
+    this.hp = 100;
+    this.max_hp = 100;
+    this.att = 10;
+    this.__speed = 0;
   }
 
   x_move(amount) {
-    this.size_x += amount;
+    this.pos_x += amount;
   }
 
   y_move(amount) {
-    this.size_y += amount;
+    this.pos_y += amount;
   }
 
-  draw(context) {
-    context.fillStyle = "#FF0000";
-    context.fillRect(
-      50,
-      50,
-      context.canvas.width - 100,
-      context.canvas.height - 100
-    );
+  dmg_taken(amount) {
+    this.hp -= amount;
   }
 }
 
@@ -41,34 +47,10 @@ export class Obstacle extends DrawingObject {
   constructor(pos_x, pos_y, size_x, size_y, type) {
     super();
   }
-
-  draw(ctx) {
-    ctx.fillStyle = "#000000";
-    ctx.fillRect(50, 50, ctx.canvas.width - 100, ctx.canvas.height - 100);
-  }
 }
 
-export class Player extends Unit {
+export class cannon_ball extends DrawingObject {
   constructor(pos_x, pos_y, size_x, size_y, type) {
     super();
-  }
-
-  action(event) {
-    if ((event = "a")) {
-      this.x_move(-5);
-    }
-    if ((event = "d")) {
-      this.x_move(5);
-    }
-    if ((event = "s")) {
-      this.x_move(-5);
-    }
-    if ((event = "w")) {
-      this.x_move(5);
-    }
-  }
-
-  draw(context) {
-    console.log("drawing player");
   }
 }

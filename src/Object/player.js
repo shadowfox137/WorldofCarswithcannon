@@ -1,8 +1,8 @@
 import Unit from "./unit.js";
 
-class Player extends Unit {
+export class Player extends Unit {
   constructor() {
     super();
-    var __speed = 1;
+    this.__speed = 10;
   }
 }

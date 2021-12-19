@@ -25,8 +25,8 @@ function App() {
 
   // Set drawing interval
   useEffect(() => {
-    setInterval(() => {
-      setObjects((old) => old + 1);
+    const interval = setInterval(() => {
+      setObjects((objects) => [...objects, ctr.getObject()]);
     }, 1000);
   }, []);
 
@@ -35,9 +35,9 @@ function App() {
   }, [objects]);
 
   /*
-        <div className="button">
-        <button onClick={handleClearCanvas}> CLEAR </button>
-        </div>
+    <div className="button">
+      <button onClick={handleClearCanvas}> CLEAR </button>
+    </div>
 
   */
 
