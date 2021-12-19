@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <canvas
+      id="myCanvas"
+      width="1600"
+      height="900"
+      style="border: 1px solid #000000"
+    >
+      Your browser does not support the HTML canvas tag.
+    </canvas>
+
+    <script>
+      // this is a temporaru file to draw all the objects in the canvas
+
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      var starting_coord = [600, 600];
+      var tank_color = "black";
+
+      // tank
+      ctx.fillStyle = tank_color;
+
+      // left track
+      ctx.fillRect(starting_coord[0], starting_coord[1], 10, 10);
+      ctx.fillRect(starting_coord[0], starting_coord[1] + 12, 10, 10);
+      ctx.fillRect(starting_coord[0], starting_coord[1] + 24, 10, 10);
+      ctx.fillRect(starting_coord[0], starting_coord[1] + 36, 10, 10);
+
+      // right track
+      ctx.fillRect(starting_coord[0] + 40, starting_coord[1], 10, 10);
+      ctx.fillRect(starting_coord[0] + 40, starting_coord[1] + 12, 10, 10);
+      ctx.fillRect(starting_coord[0] + 40, starting_coord[1] + 24, 10, 10);
+      ctx.fillRect(starting_coord[0] + 40, starting_coord[1] + 36, 10, 10);
+
+      // body
+      ctx.fillRect(starting_coord[0] + 10, starting_coord[1] + 10, 30, 26);
+
+      // barrel
+      ctx.fillRect(starting_coord[0] + 22, starting_coord[1] - 20, 6, 30);
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      // wall
+      ctx.beginPath();
+      ctx.rect(300, 300, 100, 100);
+      ctx.stroke();
+    </script>
+  </body>
+</html>
