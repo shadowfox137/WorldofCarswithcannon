@@ -1,6 +1,5 @@
 import "./CSS/App.css";
 import React, { useEffect, useState, useRef } from "react";
-import { useCanvas } from "./Script/useCanvas";
 import { UpdateCanvas } from "./Script/updateCanvas";
 import Controller from "./Script/Controller";
 
@@ -21,6 +20,11 @@ function App() {
 
   const handleCanvasClick = (event) => {
     console.log("clickey");
+  };
+
+  const handleKeyDown = (event) => {
+    console.log("keydown");
+    console.log(event.key);
   };
 
   // Set drawing interval
@@ -49,6 +53,7 @@ function App() {
         width={canvasWidth}
         height={canvasHeight}
         onClick={handleCanvasClick}
+        onKeyDown={handleKeyDown}
       />
     </main>
   );

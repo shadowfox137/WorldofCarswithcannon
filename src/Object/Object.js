@@ -52,5 +52,7 @@ export class Obstacle extends DrawingObject {
 export class cannon_ball extends DrawingObject {
   constructor(pos_x, pos_y, size_x, size_y, type) {
     super();
+    this.t_dir = [0, 0];
+    this.speed = 50;
   }
 }
