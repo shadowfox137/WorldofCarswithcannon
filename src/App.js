@@ -48,6 +48,7 @@ function App() {
 
   return (
     <main className="App-main">
+      <p>Title</p>
       <canvas
         className="App-canvas"
         ref={canvasRef}
