@@ -1,34 +1,29 @@
 import Draw from "./Draw";
 
+/*
+  * @class Controller
+  * @description Controller class for the game
+  * @param {number} width - width of the canvas
+  * @param {number} height - height of the canvas
+  * @param {number} numObjects - number of objects to be drawn
+
+  The map will be split into a grid of squares of 32 x 18. Each square will be representing
+  one drawing unit of the game. The Hit box of each unit will be a square of 50 pixels by 
+  50 pixels.
+
+*/
 class Controller {
   constructor() {
     this.drawingList = [];
     this.ctx = null;
   }
 
-  setCtx(ctx) {
-    this.ctx = ctx;
-    console.log("1");
-    // this.ctx.fillStyle = "#000000";
-    // this.ctx.fillRect(50, 50, ctx.canvas.width - 100, ctx.canvas.height - 100);
-    console.log("2");
-  }
+  notifyPlayerKeyDown(key) {
+    console.log(key);
 
-  refresh() {
-    console.log("works");
-    Draw(this.ctx, this.drawingList);
-  }
-
-  removeFromList(index) {
-    this.drawingList.splice(index, 1);
-  }
-  y;
-  addToList(object) {
-    this.drawingList.push(object);
-  }
-
-  getObject() {
-    return 10;
+    if ((key = "w")) {
+      this.drawingList.push(new Draw(0, -1));
+    }
   }
 }
 

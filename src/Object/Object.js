@@ -1,14 +1,13 @@
-import Draw from "../Script/Draw";
-
 export class DrawingObject {
   // posx and posy are the coordinates of the top left corner of the object
   // size will determine the hitbox of the object
-  constructor(pos_x, pos_y, size_x, size_y, type) {
+  constructor(pos_x, pos_y, size_x, size_y, type, ctr) {
     this.size_x = size_x;
     this.size_y = size_y;
     this.pos_x = pos_x;
     this.pos_y = pos_y;
     this.type = type;
+    this.ctr = ctr;
   }
 
   resize(x, y) {
@@ -40,6 +39,10 @@ export class Unit extends DrawingObject {
 
   dmg_taken(amount) {
     this.hp -= amount;
+    if (this.hp <= 0) {
+      this.hp = 0;
+      this.ctr.notifyDeath(this);
+    }
   }
 }
 
@@ -54,5 +57,12 @@ export class cannon_ball extends DrawingObject {
     super();
     this.t_dir = [0, 0];
     this.speed = 50;
+  }
+
+  travel(x, y) {
+    if (this.ctr.notifyMoves(this, x, y)) {
+      this.pos_x += x;
+      this.pos_y += y;
+    }
   }
 }

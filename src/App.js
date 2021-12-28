@@ -25,6 +25,7 @@ function App() {
   const handleKeyDown = (event) => {
     console.log("keydown");
     console.log(event.key);
+    ctr.notifyPlayerKeyDown(event.key);
   };
 
   // Set drawing interval
