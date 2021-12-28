@@ -1,13 +1,15 @@
 export class DrawingObject {
   // posx and posy are the coordinates of the top left corner of the object
   // size will determine the hitbox of the object
+
+  //the refresh time interval is set to 100ms
   constructor(pos_x, pos_y, size_x, size_y, type, ctr) {
     this.size_x = size_x;
     this.size_y = size_y;
     this.pos_x = pos_x;
     this.pos_y = pos_y;
-    this.type = type;
     this.ctr = ctr;
+    this.dir = [0, -1]; //default facing direction of the object is up
   }
 
   resize(x, y) {
@@ -27,6 +29,7 @@ export class Unit extends DrawingObject {
     this.max_hp = 100;
     this.att = 10;
     this.__speed = 0;
+    this.ammo = [];
   }
 
   x_move(amount) {
@@ -37,8 +40,8 @@ export class Unit extends DrawingObject {
     this.pos_y += amount;
   }
 
-  dmg_taken(amount) {
-    this.hp -= amount;
+  HP_change(amount) {
+    this.hp += amount;
     if (this.hp <= 0) {
       this.hp = 0;
       this.ctr.notifyDeath(this);
@@ -52,10 +55,9 @@ export class Obstacle extends DrawingObject {
   }
 }
 
-export class cannon_ball extends DrawingObject {
+export class bullet extends DrawingObject {
   constructor(pos_x, pos_y, size_x, size_y, type) {
     super();
-    this.t_dir = [0, 0];
     this.speed = 50;
   }
 

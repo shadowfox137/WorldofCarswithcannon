@@ -1,4 +1,4 @@
-import Unit from "./unit.js";
+import Unit from "./Object.js";
 
 export class enemy extends Unit {
   constructor() {
@@ -16,5 +16,17 @@ export class enemy extends Unit {
     } else {
       this.y_move(this.__speed);
     }
+  }
+
+  shoot() {
+    let bullet = new bullet(
+      this.pos_x,
+      this.pos_y,
+      this.size_x,
+      this.size_y,
+      this.type
+    );
+    this.ammo.push(bullet);
+    this.ctr.notifyBulletCreate(bullet);
   }
 }
