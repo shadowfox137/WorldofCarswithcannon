@@ -31,12 +31,13 @@ function App() {
   // Set drawing interval
   useEffect(() => {
     const interval = setInterval(() => {
-      setObjects((objects) => [...objects, ctr.getObject()]);
+      setObjects((objects) => [...ctr.getObject()]);
+      ctr.addObject();
     }, 1000);
   }, []);
 
   useEffect(() => {
-    console.log(objects);
+    console.log(objects[objects.length - 1]);
   }, [objects]);
 
   /*

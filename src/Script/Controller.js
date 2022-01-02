@@ -14,16 +14,20 @@ import Draw from "./Draw";
 */
 class Controller {
   constructor() {
-    this.drawingList = [];
+    this.objects = [1];
     this.ctx = null;
   }
 
   notifyPlayerKeyDown(key) {
     console.log(key);
+  }
 
-    if ((key = "w")) {
-      this.drawingList.push(new Draw(0, -1));
-    }
+  getObject() {
+    return this.objects;
+  }
+
+  addObject() {
+    this.objects.push(2);
   }
 }
 
