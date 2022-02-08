@@ -1,7 +1,8 @@
-import "./CSS/App.css";
 import React, { useEffect, useState, useRef } from "react";
 import { UpdateCanvas } from "./Script/updateCanvas";
 import Controller from "./Script/Controller";
+import { menu_block } from "./Component/menu_block";
+import { MainStylecss } from "../CSS/MainStylecss.js";
 
 function App() {
   const ctr = new Controller();
@@ -47,8 +48,9 @@ function App() {
   */
 
   return (
-    <main className="App-main">
+    <main className="App-main" style={MainStylecss}>
       <p>Title</p>
+      <div className="menu">test</div>
       <canvas
         className="App-canvas"
         ref={canvasRef}

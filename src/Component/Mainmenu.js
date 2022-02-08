@@ -8,14 +8,6 @@ class Mainmenu extends React.Component {
     };
   }
 
-  Start() {
-    console.log("starting game");
-  }
-
-  Help() {
-    console.log("opening help menu");
-  }
-
   render() {
     return (
       <div id="startingScreen">

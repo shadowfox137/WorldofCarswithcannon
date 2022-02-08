@@ -25,6 +25,10 @@ class Controller {
       this.drawingList.push(new Draw(0, -1));
     }
   }
+
+  getObject() {
+    return 10;
+  }
 }
 
 export default Controller;

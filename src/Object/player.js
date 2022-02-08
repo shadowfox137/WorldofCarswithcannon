@@ -21,14 +21,6 @@ export class Player extends Unit {
     }
   }
 
-  y_move(amount) {
-    this.pos_y += amount;
-  }
-
-  x_move(amount) {
-    this.pos_x += amount;
-  }
-
   HP_change(amount) {
     this.hp += amount;
     this.ctr.notifyPlayerHPChange(this, amount);
@@ -39,7 +31,7 @@ export class Player extends Unit {
   }
 
   shoot() {
-    let bul = new bullet(this.pos_x, this.pos_y, this.size_x, this.size_y);
+    let bul = new bullet(this.pos_x, this.pos_y, this.dir);
     this.ammo.push(bul);
     this.ctr.notifyBulletCreate(bul);
   }

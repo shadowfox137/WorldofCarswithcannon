@@ -13,37 +13,30 @@
   color: #61dafb;
 }
 
-main {
+#app-main {
   visibility: visible;
-  position: fixed;
   display: block;
   border: 3px solid blue;
   margin: auto;
 }
 
 canvas {
-  position: fixed;
+  visibility: hidden;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
-  display: block;
   border: 1px solid red;
 }
 
-/*
-#mainmenu {
-  visibility: hidden;
-  position: fixed;
-  display: block;
-  border: 3px solid green;
-  height: 800px;
-  width: 800px;
-  margin-left: 100px;
-  margin-right: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
+menu {
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  background-color: black;
 }
-*/
 
 @keyframes App-logo-spin {
   from {
